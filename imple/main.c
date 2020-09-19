@@ -3,7 +3,7 @@
 int main()
 {
 FILE * fp;
-Employee e;
+Employee emp;
 int option;
 char another;
 if((fp=fopen("employeeInfo.txt","rb+"))==NULL)
@@ -44,8 +44,7 @@ i++;
 }
 }while(password[i]!=13);
 password[i] = '\0';
-if(((strcasecmp(username,"admin"))==0)&&((strcasecmp(passw
-ord,"pass")==0)))
+if(((strcasecmp(username,"admin"))==0)&&((strcasecmp(password,"pass")==0)))
 {
  while(1)
 {
