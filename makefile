@@ -10,6 +10,7 @@ imple/src/emp.c\
 
 
 
+
 # All include folders with header files
 INC	= -Iinc
 
@@ -30,7 +31,7 @@ all: $(SRC) $(BUILD)
 run:$(PROJECT_NAME)
 	./$(PROJECT_OUTPUT).out
 
-
+ all: $(SRC) $(BUILD)	gcc $(SRC) $(INC) -o $(PROJECT_OUTPUT).out -lm
 
 
 # Remove all the built files, invoke by `make clean`
@@ -40,3 +41,10 @@ clean:
 # Create new build folder if not present
 $(BUILD):
 	mkdir build
+	
+	
+	
+	 - name: install math library
+
+       	run:  sudo apt-get install -y libmath-libm-perl 
+
