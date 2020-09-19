@@ -73,15 +73,15 @@ if(((strcasecmp(user,"admin"))==0) && ((strcasecmp(passcode,"pass")==0)))
  {
  case 0: return 1;
  break;
- case 1: add(fp);
+ case 1: addemp(fp);
  break;
  case 2: fp=del(fp);
  break;
- case 3: modify(fp);
+ case 3: mod(fp);
  break;
- case 4: displayList(fp);
+ case 4: disp(fp);
  break;
- case 5: searchRecord(fp);
+ case 5: search(fp);
  break;
  case 6: displaybasic(fp);
  break;
@@ -91,7 +91,7 @@ if(((strcasecmp(user,"admin"))==0) && ((strcasecmp(passcode,"pass")==0)))
  break;
  case 9: femaleemp(fp);
  break;
- case 10: frmdiff(fp);
+ case 10: frmDhaka(fp);
  break;
  case 11: frmors(fp);
  break;
