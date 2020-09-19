@@ -1,5 +1,5 @@
 #include"emp.h"
-void add(FILE * fp)
+void addemp(FILE * fp)
 {
 printHead();
 printf("\n\t\t\t\Add Employee");
@@ -102,15 +102,14 @@ return fp;
 }
                    
                    
- void modify(FILE * fp)
+ void mod(FILE * fp)
 {
 printHead();
 printf("\n\t\t\t\Modify Employee");
 Employee emp;
 int i,flag=0,tempid,siz=sizeof(emp);
 float sal;
-printf("\n\n\tEnter ID Number of Employee to Modify the
-Record : ");
+printf("\n\n\tEnter ID Number of Employee to Modify the Record : ");
 scanf("%d",&tempid);
 rewind(fp);
 while((fread(&emp,siz,1,fp))==1)
@@ -171,7 +170,7 @@ printf("\n\n\t");
 system("pause");
 }
        
-void searchRecord(FILE *fp)
+void search(FILE *fp)
 {printHead();
 printf("\n\t\t\t\Search Employee");
 int tempid,flag,siz,i;
@@ -212,7 +211,7 @@ another=getchar();
 }
 }
         
-void displayList(FILE * fp)
+void disp(FILE * fp)
 { printHead();
 printf("\n\t\t\t\List of Employees");
  Employee emp;
