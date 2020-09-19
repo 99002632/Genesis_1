@@ -4,74 +4,62 @@ void add(FILE * fp)
 printHead();
 printf("\n\t\t\t\Add Employee");
 char another='y';
-Employee e;
+Employee emp;
 fseek(fp,0,SEEK_END);
 while(another=='y'||another=='Y')
 {
  printf("\n\n\t\tEnter ID number: ");
- scanf("%d",&e.id);
+ scanf("%d",&emp.id);
  printf("\n\n\t\tEnter Full Name of Employee: ");
  fflush(stdin);
- fgets(e.name,100,stdin); //fgets takes an extra \n
+ fgets(emp.name,100,stdin); //fgets takes an extra \n
 character as input
- e.name[strlen(e.name)-1]='\0';
+ emp.name[strlen(emp.name)-1]='\0';
  printf("\n\n\t\tEnter Designation: ");
  fflush(stdin);
- fgets(e.desgn,10,stdin); //fgets takes an extra \n
+ fgets(emp.desgn,10,stdin); //fgets takes an extra \n
 character as input
- e.desgn[strlen(e.desgn)-1]='\0';
+ emp.desgn[strlen(emp.desgn)-1]='\0';
  printf("\n\n\t\tEnter Gender: ");
  fflush(stdin);
- fgets(e.gender,10,stdin); //fgets takes an extra \n
+ fgets(emp.gender,10,stdin); //fgets takes an extra \n
 character as input
- e.gender[strlen(e.gender)-1]='\0';
+ emp.gender[strlen(emp.gender)-1]='\0';
  printf("\n\n\t\tEnter Branch: ");
  fflush(stdin);
- fgets(e.branch,50,stdin);
- e.branch[strlen(e.branch)-1]='\0';
+ fgets(emp.branch,50,stdin);
+ emp.branch[strlen(emp.branch)-1]='\0';
  printf("\n\n\t\tEnter Salary: ");
- scanf("%f",&e.sal);
+ scanf("%f",&emp.sal);
  printf("\n\n\t\tEnter Present Address: ");
  fflush(stdin);
- fgets(e.psaddr,200,stdin);
- e.psaddr[strlen(e.psaddr)-1]='\0';
+ fgets(emp.psaddr,200,stdin);
+ emp.psaddr[strlen(emp.psaddr)-1]='\0';
  printf("\n\n\t\tEnter Permanant Address: ");
  fflush(stdin);
- fgets(e.prtaddr,200,stdin);
- e.prtaddr[strlen(e.prtaddr)-1]='\0';
+ fgets(emp.prtaddr,200,stdin);
+ emp.prtaddr[strlen(emp.prtaddr)-1]='\0';
  printf("\n\n\t\tEnter Phone: ");
  fflush(stdin);
- fgets(e.phone,50,stdin);
- e.phone[strlen(e.phone)-1]='\0';
+ fgets(emp.phone,50,stdin);
+ emp.phone[strlen(emp.phone)-1]='\0';
  printf("\n\n\t\tEnter E-mail: ");
  fflush(stdin);
- fgets(e.mail,20,stdin);
- e.mail[strlen(e.mail)-1]='\0';
- fwrite(&e,sizeof(e),1,fp);
+ fgets(emp.mail,20,stdin);
+ emp.mail[strlen(emp.mail)-1]='\0';
+ fwrite(&emp,sizeof(emp),1,fp);
  printf("\n\n\t\tWant to enter another employee info
 (Y/N)\t");
  fflush(stdin);
  another=getchar();
 }
-}
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        FILE * del(FILE * fp)
+}      
+FILE * del(FILE * fp)
 {
 printHead();
 printf("\n\t\t\t\Delete Employee");
-Employee e;
-int flag=0,tempid,siz=sizeof(e);
+Employee emp;
+int flag=0,tempid,siz=sizeof(emp);
 FILE *ft;
 if((ft=fopen("temp.txt","wb+"))==NULL)
 {
@@ -84,17 +72,17 @@ Record");
 printf("\n\n\t\t\tID No. : ");
 scanf("%d",&tempid);
 rewind(fp);
-while((fread(&e,siz,1,fp))==1)
+while((fread(&emp,siz,1,fp))==1)
 {
  if(e.id==tempid)
  { flag=1;
  printf("\n\tRecord Deleted for");
 
-printf("\n\n\t\t%s\n\n\t\t%s\n\n\t\t%d\n\t",e.name,e.branc
-h,e.id);
+printf("\n\n\t\t%s\n\n\t\t%s\n\n\t\t%d\n\t",emp.name,emp.branc
+h,emp.id);
  continue;
  }
- fwrite(&e,siz,1,ft);
+ fwrite(&emp,siz,1,ft);
 }
 fclose(fp);
 fclose(ft);
@@ -118,16 +106,16 @@ return fp;
 {
 printHead();
 printf("\n\t\t\t\Modify Employee");
-Employee e;
-int i,flag=0,tempid,siz=sizeof(e);
+Employee emp;
+int i,flag=0,tempid,siz=sizeof(emp);
 float sal;
 printf("\n\n\tEnter ID Number of Employee to Modify the
 Record : ");
 scanf("%d",&tempid);
 rewind(fp);
-while((fread(&e,siz,1,fp))==1)
+while((fread(&emp,siz,1,fp))==1)
 {
- if(e.id==tempid)
+ if(emp.id==tempid)
  {flag=1;
  break;
  }
@@ -138,84 +126,83 @@ if(flag==1)
  printf("\n\n\t\tRecord Found");
  printf("\n\n\t\tEnter New Data for the Record");
  printf("\n\n\t\tEnter ID number: ");
- scanf("%d",&e.id);
+ scanf("%d",&emp.id);
  printf("\n\n\t\tEnter Full Name of Employee: ");
  fflush(stdin);
- fgets(e.name,100,stdin); //fgets takes an extra \n
+ fgets(emp.name,100,stdin); //fgets takes an extra \n
 character as input
- e.name[strlen(e.name)-1]='\0';
+ emp.name[strlen(emp.name)-1]='\0';
  printf("\n\n\t\tEnter Designation: ");
  fflush(stdin);
- fgets(e.desgn,10,stdin); //fgets takes an extra \n
+ fgets(emp.desgn,10,stdin); //fgets takes an extra \n
 character as input
- e.desgn[strlen(e.desgn)-1]='\0';
+ emp.desgn[strlen(emp.desgn)-1]='\0';
  printf("\n\n\t\tEnter Gender: ");
  fflush(stdin);
- fgets(e.gender,10,stdin); //fgets takes an extra \n
+ fgets(emp.gender,10,stdin); //fgets takes an extra \n
 character as input
- e.gender[strlen(e.gender)-1]='\0';
+ emp.gender[strlen(emp.gender)-1]='\0';
  printf("\n\n\t\tEnter Branch: ");
  fflush(stdin);
- fgets(e.branch,50,stdin);
- e.branch[strlen(e.branch)-1]='\0';
+ fgets(emp.branch,50,stdin);
+ emp.branch[strlen(emp.branch)-1]='\0';
  printf("\n\n\t\tEnter Salary: ");
- scanf("%f",&e.sal);
+ scanf("%f",&emp.sal);
  printf("\n\n\t\tEnter Present Address: ");
  fflush(stdin);
- fgets(e.psaddr,200,stdin);
- e.psaddr[strlen(e.psaddr)-1]='\0';
+ fgets(emp.psaddr,200,stdin);
+ emp.psaddr[strlen(emp.psaddr)-1]='\0';
  printf("\n\n\t\tEnter Permanant Address: ");
  fflush(stdin);
- fgets(e.prtaddr,200,stdin);
- e.prtaddr[strlen(e.prtaddr)-1]='\0';
+ fgets(emp.prtaddr,200,stdin);
+ emp.prtaddr[strlen(emp.prtaddr)-1]='\0';
  printf("\n\n\t\tEnter Phone: ");
  fflush(stdin);
- fgets(e.phone,50,stdin);
- e.phone[strlen(e.phone)-1]='\0';
+ fgets(emp.phone,50,stdin);
+ emp.phone[strlen(emp.phone)-1]='\0';
  printf("\n\n\t\tEnter E-mail: ");
  fflush(stdin);
- fgets(e.mail,20,stdin);
- e.mail[strlen(e.mail)-1]='\0';
- fwrite(&e,sizeof(e),1,fp);
+ fgets(emp.mail,20,stdin);
+ emp.mail[strlen(emp.mail)-1]='\0';
+ fwrite(&emp,sizeof(emp),1,fp);
 }
 else printf("\n\n\t!!!! ERROR !!!! RECORD NOT FOUND");
 printf("\n\n\t");
 system("pause");
 }
        
-       
-       void searchRecord(FILE *fp)
+void searchRecord(FILE *fp)
 {printHead();
 printf("\n\t\t\t\Search Employee");
 int tempid,flag,siz,i;
-Employee e;
+Employee emp;
 char another='y';
-siz=sizeof(e);
+siz=sizeof(emp);
 while(another=='y'||another=='Y')
 {
 printf("\n\n\tEnter ID Number of Employee to search the
 record : ");
 scanf("%d",&tempid);
 rewind(fp);
-while((fread(&e,siz,1,fp))==1)
+while((fread(&emp,siz,1,fp))==1)
 {
- if(e.id==tempid)
+ if(emp.id==tempid)
  {flag=1;
  break;
  }
 }
 if(flag==1)
  {
- printf("\n\t\tNAME : %s",e.name);
- printf("\n\n\t\tID : %d",e.id);
- printf("\n\n\t\tDESIGNATION : %s",e.desgn);
- printf("\n\n\t\tBRANCH : %s",e.branch);
- printf("\n\n\t\tSALARY: %.2f",e.sal);
- printf("\n\n\t\tPRESENT ADDRESS : %s",e.psaddr);
+ printf("\n\t\tNAME : %s",emp.name);
+ printf("\n\n\t\tID : %d",emp.id);
+ printf("\n\n\t\tDESIGNATION : %s",emp.desgn);
+ printf("\n\n\t\tBRANCH : %s",emp.branch);
+ printf("\n\n\t\tSALARY: %.2f",emp.sal);
+ printf("\n\n\t\tPRESENT ADDRESS : %s",emp.psaddr);
  printf("\n\n\t\tPERMANANT ADDRESS :
-%s",e.prtaddr);
- printf("\n\n\t\tPHONE : %s",e.phone);
- printf("\n\n\t\tE-MAIL : %s",e.mail);
+%s",emp.prtaddr);
+ printf("\n\n\t\tPHONE : %s",emp.phone);
+ printf("\n\n\t\tE-MAIL : %s",emp.mail);
  printChar('=',65);
 }
 else printf("\n\n\t\t!!!! ERROR RECORD NOT FOUND !!!!");
@@ -225,28 +212,25 @@ another=getchar();
 }
 }
         
-        
-        
-        
-        void displayList(FILE * fp)
+void displayList(FILE * fp)
 { printHead();
 printf("\n\t\t\t\List of Employees");
- Employee e;
- int i,siz=sizeof(e);
+ Employee emp;
+ int i,siz=sizeof(emp);
  rewind(fp);
- while((fread(&e,siz,1,fp))==1)
+ while((fread(&emp,siz,1,fp))==1)
  {
- printf("\n\n\t\tID : %d",e.id);
- printf("\n\n\t\tNAME : %s",e.name);
- printf("\n\n\t\tDESIGNATION : %s",e.desgn);
- printf("\n\n\t\tGENDER : %s",e.gender);
- printf("\n\n\t\tBRANCH : %s",e.branch);
- printf("\n\n\t\tSALARY : %.2f",e.sal);
- printf("\n\n\t\tPRESENT ADDRESS : %s",e.psaddr);
+ printf("\n\n\t\tID : %d",emp.id);
+ printf("\n\n\t\tNAME : %s",emp.name);
+ printf("\n\n\t\tDESIGNATION : %s",emp.desgn);
+ printf("\n\n\t\tGENDER : %s",emp.gender);
+ printf("\n\n\t\tBRANCH : %s",emp.branch);
+ printf("\n\n\t\tSALARY : %.2f",emp.sal);
+ printf("\n\n\t\tPRESENT ADDRESS : %s",emp.psaddr);
  printf("\n\n\t\tPERMANANT ADDRESS :
-%s",e.prtaddr);
- printf("\n\n\t\tPHONE : %s",e.phone);
- printf("\n\n\t\tE-MAIL : %s\n\n\t",e.mail);
+%s",emp.prtaddr);
+ printf("\n\n\t\tPHONE : %s",emp.phone);
+ printf("\n\n\t\tE-MAIL : %s\n\n\t",emp.mail);
  printChar('=',65);
  }
  printf("\n\n\n\t");
